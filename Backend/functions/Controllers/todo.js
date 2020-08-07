@@ -45,3 +45,38 @@ exports.createAuthUser = functions.https.onCall(async (data)=> {
         }
     })
 });
+
+
+
+exports.addTodo = functions.https.onCall(async (data)=>{
+    const uid = data.uid
+    
+    return admin.auth().getUser(uid)
+        .then(async function(userdata) {
+            console.log(userdata)
+            if(userdata){
+               return admin.firestore().collection("Users").doc(uid).collection('TodoList').add({
+                    details : data.tododetails
+                })
+            }
+            else{
+                return{
+                    success: false,
+                    msg: 'No such user exists'
+                }
+            }
+        })
+        .then(()=>{
+            return{
+                success: true,
+                msg: 'Successfully added the todo!',
+            }
+        })
+        .catch(error =>{
+            return {
+                success: false,
+                msg: 'Error adding the todo. Please try again!',
+                error: error.message
+            }
+        })
+});
