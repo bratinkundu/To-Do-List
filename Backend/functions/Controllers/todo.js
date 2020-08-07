@@ -80,3 +80,35 @@ exports.addTodo = functions.https.onCall(async (data)=>{
             }
         })
 });
+
+
+
+exports.getAllTodo = functions.https.onCall(async (data)=>{
+    if(data.uid){
+        var todoList = [];
+        return admin.firestore().collection('Users').doc(data.uid).collection('TodoList').get()
+        .then((snapshot)=>{
+            snapshot.forEach((doc)=>{
+                let todo ={
+                    id: doc.id,
+                    details: doc.data().details
+                }
+                todoList.push(todo)
+            })
+            return todoList;
+        })
+        .catch((error) =>{
+            return{
+                success: false,
+                msg: 'There is some error fetching the list',
+                error: error.message
+            }
+        })
+    }
+    else{
+        return{
+            success: false,
+            msg: 'No such user exists'
+        }
+    }
+})
