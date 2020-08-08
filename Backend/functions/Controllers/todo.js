@@ -139,3 +139,29 @@ exports.editTodo = functions.https.onCall(async (data)=>{
         }
     }
 })
+
+
+exports.deleteTodo = functions.https.onCall(async (data)=>{
+    if(data.uid && data.docid){
+        return admin.firestore().collection('Users').doc(data.uid).collection('TodoList').doc(data.docid).delete()
+        .then(() => {
+            return{
+                success: true,
+                msg: 'Todo deleted successfully'
+            }
+        })
+        .catch((error)=>{
+            return{
+                success: false,
+                msg: 'Error deleting todo',
+                error: error.message
+            }
+        })
+    }
+    else{
+        return{
+            success: false,
+            msg: 'No such user or data exists',
+        }
+    }
+})
