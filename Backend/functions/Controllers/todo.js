@@ -47,6 +47,29 @@ exports.createAuthUser = functions.https.onCall(async (data)=> {
 });
 
 
+exports.getRequestedUser = functions.https.onCall(async (data)=>{
+    const email = data.email;
+    return admin.auth().getUserByEmail(email)
+    .then(async function(userdata){
+        console.log(userdata)
+        if(userdata){
+            return userdata.toJSON();
+        }
+        else{
+            return{
+                success: false,
+                msg: 'No such user exists'
+            }
+        }
+    }).catch(error=>{
+        return {
+            success: false,
+            msg: 'Error getting user data. Please try again!',
+            error: error.message
+        }
+    })
+});
+
 
 exports.addTodo = functions.https.onCall(async (data)=>{
     const uid = data.uid
