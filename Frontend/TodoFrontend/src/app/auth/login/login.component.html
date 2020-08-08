@@ -1,0 +1,32 @@
+<section>
+    <div class="container-lg">
+        <div class="row shadow container-option">
+            <div class="col-md-7" style="background-color: #FFFFFF;">
+                <img src="../../../assets/5272.jpg">
+            </div>
+            <div class="form-area col-md-5 text-center">
+                <div class="mt-3 mb-3 d-flex flex-column">
+                    <h4>Todo List Login</h4>
+                    <form class="d-flex flex-column">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Email" type="text">
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" type="password">
+                            <mat-icon matSuffix>vpn_key</mat-icon>
+                        </mat-form-field>
+                    </form>
+                    <div class="d-flex flex-row justify-content-center">
+                        <button mat-raised-button color="primary">Log In</button>
+                    </div>
+                    <div>
+                        <p>Don't have an account?<button mat-flat-button routerLink="/auth/register">Register Here</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

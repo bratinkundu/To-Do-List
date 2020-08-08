@@ -112,3 +112,30 @@ exports.getAllTodo = functions.https.onCall(async (data)=>{
         }
     }
 })
+
+
+exports.editTodo = functions.https.onCall(async (data)=>{
+    if(data.docid && data.uid){
+        let updateddata = {details: data.details}
+        return admin.firestore().collection('Users').doc(data.uid).collection('TodoList').doc(data.docid).update(updateddata)
+        .then(()=>{
+            return{
+                success: true,
+                msg: 'Todo updated successfully!'
+            }
+        })
+        .catch((error)=>{
+            return{
+                success: false,
+                msg: 'Error updating Todo',
+                error: error.message
+            }
+        })
+    }
+    else{
+        return{
+            success: false,
+            msg: 'Error updating the todo'
+        }
+    }
+})

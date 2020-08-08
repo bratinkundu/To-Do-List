@@ -1,0 +1,25 @@
+img{
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    min-height: calc(100vh - 64px);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+}
+
+.form-area{
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-option{
+    height:500px;
+    max-height: 500px;
+}
