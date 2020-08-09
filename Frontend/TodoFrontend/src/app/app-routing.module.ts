@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren : () =>  import('../app/auth/auth.module').then(m=> m.AuthModule)
   },
   {
+    path:'todo',
+    loadChildren: () => import('../app/todo/todo.module').then(m=>m.TodoModule)
+  },
+  {
     path:'',
     redirectTo:'auth',
     pathMatch: 'full'
