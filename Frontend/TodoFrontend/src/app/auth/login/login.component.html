@@ -10,17 +10,17 @@
                     <form class="d-flex flex-column">
                         <mat-form-field appearance="outline">
                             <mat-label>Username</mat-label>
-                            <input matInput placeholder="Email" type="text">
+                            <input matInput placeholder="Email" name="email" [(ngModel)]="userEmail" type="text">
                             <mat-icon matSuffix>email</mat-icon>
-                        </mat-form-field>
+                        </mat-form-field> 
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput placeholder="Password" type="password">
+                            <input matInput placeholder="Password" name="password" [(ngModel)]="userPassword" type="password">
                             <mat-icon matSuffix>vpn_key</mat-icon>
                         </mat-form-field>
                     </form>
                     <div class="d-flex flex-row justify-content-center">
-                        <button mat-raised-button color="primary">Log In</button>
+                        <button mat-raised-button color="primary" (click)="loginUser()" >Log In</button>
                     </div>
                     <div>
                         <p>Don't have an account?<button mat-flat-button routerLink="/auth/register">Register Here</button></p>

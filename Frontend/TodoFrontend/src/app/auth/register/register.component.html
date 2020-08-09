@@ -7,38 +7,38 @@
             <div class="form-area col-md-5 text-center">
                 <div class="mt-3 mb-3 d-flex flex-column">
                     <h4>Todo List Registration</h4>
-                    <form class="d-flex flex-column">
+                    <form [formGroup]="registerForm" class="d-flex flex-column">
                         <mat-form-field appearance="outline">
                             <mat-label>Full Name</mat-label>
-                            <input matInput placeholder="Password" type="text">
+                            <input matInput formControlName="name" placeholder="Full Name" type="text">
                             <mat-icon matSuffix>person_outline</mat-icon>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
-                            <input matInput placeholder="Email" type="text">
+                            <input matInput formControlName="email" placeholder="Email" type="text">
                             <mat-icon matSuffix>email</mat-icon>
                         </mat-form-field>
                         
                         <mat-form-field appearance="outline">
                             <mat-label>Mobile Number</mat-label>
-                            <input matInput placeholder="Password" type="text">
+                            <input matInput formControlName="phoneno" placeholder="Mobile Number" type="text">
                             <mat-icon matSuffix>stay_primary_portrait</mat-icon>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput placeholder="Password" type="password">
+                            <input matInput formControlName="password" placeholder="Password" type="password">
                             <mat-icon matSuffix>vpn_key</mat-icon>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Confirm Password</mat-label>
-                            <input matInput placeholder="Password" type="password">
+                            <input matInput placeholder="Confirm Password" type="password">
                             <mat-icon matSuffix>vpn_key</mat-icon>
                         </mat-form-field>
                     </form>
                     <div class="d-flex flex-row justify-content-center">
-                        <button mat-raised-button color="primary">Register</button>
+                        <button mat-raised-button color="primary" (click)="registerUser()">Register</button>
                     </div>
                     <div>
                         <p>Don't have an account?<button mat-flat-button routerLink="/auth/login">Sign In Here</button></p>
