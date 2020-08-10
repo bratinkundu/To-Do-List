@@ -13,5 +13,29 @@ section{
 }
 
 .card-width{
-    max-width: 400px;
+    max-width: 360px;
+    height: 150px;
+    margin-bottom: 10px;
+    margin : 5px;
 }
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-overflow: ellipsis;
+    height: max-content;
+}
+
+.card-text-container{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+}
+
+::ng-deep .mat-card-header-text {
+    margin: 0 !important;
+  }
