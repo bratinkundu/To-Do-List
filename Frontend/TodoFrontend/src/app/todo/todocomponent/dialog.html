@@ -1,4 +1,18 @@
-<h1 mat-dialog-title>{{data.DialogTitle}}</h1>
+<h1 mat-dialog-title>{{data.operation}}</h1>
 <div mat-dialog-content>
-    
+    <form [formGroup]="todoForm" class="d-flex flex-column">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Todo Title" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Details</mat-label>
+            <textarea matInput formControlName="details" placeholder="Todo Details" cdkAutosizeMinRows="8" type="text"></textarea>
+        </mat-form-field>
+    </form>
+    <div class="d-flex flex-row justify-content-around">
+        <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="todoForm.value">Save</button>
+    </div>
 </div>
